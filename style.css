@@ -1,0 +1,151 @@
+@font-face {
+	font-family: 'Newslab Black';
+	src: url('fonts/newslabblack.woff2') format('woff2'),
+		url('fonts/newslabblack.woff') format('woff'),
+		url('fonts/newslabblack.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Texta Narrow Book';
+	src: url('fonts/textanarrow-book.woff2') format('woff2'),
+		url('fonts/textanarrow-book.woff') format('woff'),
+		url('fonts/textanarrow-book.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Texta Narrow Black';
+	src: url('fonts/textanarrow-black.woff2') format('woff2'),
+		url('fonts/textanarrow-black.woff') format('woff'),
+		url('fonts/textanarrow-black.ttf') format('truetype');
+}
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	font-family: "Texta Narrow Black";
+	overflow: hidden;
+}
+.btn {
+	position: relative;
+	z-index: 3;
+}
+.btn span {
+	display: inline-block;
+	padding: 14px 60px;
+	background-color: #5fc8ff;
+	color: white;
+	border-radius: 2px;
+	transition: all .1s ease-in-out;
+	text-transform: uppercase;
+	font-family: "Texta Narrow Book";
+}
+.btn span:hover {
+	cursor: pointer;
+	color: #5fc8ff;
+	background-color: white;
+	padding: 16px 62px;
+}
+#wrapper {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+}
+#wrapper:before {
+	content: '';
+	background: url('background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	animation: zoomInOut 20s infinite;
+}
+#wrapper:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+#lottery, #winner {
+	height: 100px;
+	width: 300px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: #fafafa;
+	position: relative;
+	z-index: 3;
+}
+#lottery.lets-do-it {
+	display: flex;
+}
+#lottery span, #winner span {
+	display: none;
+	position: absolute;
+	background-color: #fafafa;
+	width: 100%;
+	text-align: center;
+}
+#lottery span.show {
+	display: block;
+}
+#winner {
+	z-index: 9999;
+	display: flex;
+	height: 0px;
+	width: 0px;
+	opacity: 0;
+	transition: all .5s ease-in-out;
+	transform: scale(0) rotate(500deg);
+	position: relative;
+}
+.lottery-done #wrapper:after {
+	background-color: #ffffff;
+	opacity: .15;
+	animation: pulseAnimation .25s infinite;
+}
+.lottery-done #lottery {
+	display: none;
+}
+.lottery-done #winner {
+	opacity: 1;
+	transform: scale(1) rotate(0deg);
+	height: 200px;
+	width: 500px;
+}
+.lottery-done #winner span {
+	display: block;
+	font-size: 200%;
+	font-family: "Newslab Black"
+}
+@keyframes pulseAnimation {
+	0% {
+		opacity: .15;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: .15;
+	}
+}
+@keyframes zoomInOut {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
